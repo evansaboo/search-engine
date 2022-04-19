@@ -4,7 +4,7 @@ using search_engine.Domain;
 
 namespace search_engine.DbHandler
 {
-    public class DbRepository
+    public class DbRepository : IDbRepository
     {
         private readonly ILogger<DbRepository> logger;
 
@@ -18,11 +18,11 @@ namespace search_engine.DbHandler
             String sqlStatement = "CREATE TABLE planets(" +
                 "Id serial PRIMARY KEY, " +
                 "Name VARCHAR(50), " +
-                "Diameter DOUBLE, " +
-                "LengthOfDay DOUBLE, " +
-                "Density DOUBLE, " +
-                "EscapeVelocity DOUBLE, " +
-                "DistFromSun DOUBLE)";
+                "Diameter DECIMAL, " +
+                "LengthOfDay DECIMAL, " +
+                "Density DECIMAL, " +
+                "EscapeVelocity DECIMAL, " +
+                "DistFromSun DECIMAL)";
 
             var command = new NpgsqlCommand(sqlStatement, conn);
 

@@ -25,3 +25,5 @@ C:\Users\evans\git\search-engine\obj\Debug\net6.0\refint\search-engine.dll
 C:\Users\evans\git\search-engine\obj\Debug\net6.0\search-engine.pdb
 C:\Users\evans\git\search-engine\obj\Debug\net6.0\search-engine.genruntimeconfig.cache
 C:\Users\evans\git\search-engine\obj\Debug\net6.0\ref\search-engine.dll
+C:\Users\evans\git\search-engine\bin\Debug\net6.0\Dapper.dll
+C:\Users\evans\git\search-engine\bin\Debug\net6.0\Npgsql.dll

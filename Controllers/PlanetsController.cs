@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Npgsql;
+using search_engine.DbHandler;
+using search_engine.Domain;
 
 namespace search_engine.Controllers
 {
@@ -7,7 +10,9 @@ namespace search_engine.Controllers
     public class PlanetsController : ControllerBase
     {
 
-        private readonly ILogger<PlanetsController> _logger;
+        private readonly ILogger<PlanetsController> logger;
+        private NpgsqlConnection dbConnection;
+        private readonly IDbRepository dbRepository;
 
         private List<String> planets = new List<String>() 
         {
@@ -18,15 +23,17 @@ namespace search_engine.Controllers
             "Earth"
         };
 
-        public PlanetsController(ILogger<PlanetsController> logger)
+        public PlanetsController(ILogger<PlanetsController> logger, IDbRepository dbRepository)
         {
-            _logger = logger;
+            this.logger = logger;
+            this.dbRepository = dbRepository;
+            dbConnection = new DbConnection().OpenConnectionToDb();
         }
 
         [HttpGet]
-        public ActionResult<List<String>> Get()
+        public ActionResult<List<Planet>> Get()
         {
-            return planets;
+            return dbRepository.GetPlanets(dbConnection);
         }
 
         [HttpPost]
@@ -36,5 +43,11 @@ namespace search_engine.Controllers
             return planets;
         }
 
+        [HttpPost]
+        [Route("create-table")]
+        public void CreateTableDebugger()
+        {
+            dbRepository.CreatePlanetsTable(dbConnection);
+        }
     }
 }
