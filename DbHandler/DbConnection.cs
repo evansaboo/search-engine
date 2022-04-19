@@ -4,11 +4,11 @@ namespace search_engine.DbHandler
 {
     public class DbConnection
     {
-        private static string Host = "**";
-        private static string User = "**";
-        private static string DBname = "**";
-        private static string Password = "**";
-        private static string Port = "**";
+        private static string Host = "search-engine-database.postgres.database.azure.com";
+        private static string User = "searchEngineDB";
+        private static string DBname = "postgres";
+        private static string Password = "cIB3oCr8zRpgCIrpIknj";
+        private static string Port = "5432";
 
         public NpgsqlConnection OpenConnectionToDb()
         {

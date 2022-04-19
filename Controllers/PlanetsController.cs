@@ -49,5 +49,19 @@ namespace search_engine.Controllers
         {
             dbRepository.CreatePlanetsTable(dbConnection);
         }
+
+        [HttpPost]
+        [Route("add")]
+        public void addPlanet(Planet planet)
+        {
+            dbRepository.InsertNewPlanet(dbConnection, planet);
+        }
+
+        [HttpPost]
+        [Route("remove")]
+        public void removePlanet(int planetId)
+        {
+            dbRepository.DeletePlanet(dbConnection, planetId);
+        }
     }
 }

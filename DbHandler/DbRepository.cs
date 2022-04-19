@@ -35,13 +35,15 @@ namespace search_engine.DbHandler
         {
             String sqlStatement = "INSERT INTO planets" +
                 "(Id, Name, Diameter, LengthOfDay, Density, EscapeVelocity, DistFromSun) " +
-                "VALUES (@id, @name, @lengthOfDay, @density, @escapeVelocity, @distFromSun)";
+                "VALUES (@id, @name, @diameter, @lengthOfDay, @density, @escapeVelocity, @distFromSun)";
 
 
             var command = new NpgsqlCommand(sqlStatement, conn);
 
             command.Parameters.AddWithValue("id", planet.Id);
             command.Parameters.AddWithValue("name", planet.Name);
+            command.Parameters.AddWithValue("diameter", planet.Diameter);
+
             command.Parameters.AddWithValue("lengthOfDay", planet.Diameter);
             command.Parameters.AddWithValue("density", planet.Density);
             command.Parameters.AddWithValue("escapeVelocity", planet.EscapeVelocity);
